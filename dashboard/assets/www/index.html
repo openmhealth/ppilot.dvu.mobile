@@ -12,12 +12,14 @@
         <link rel="stylesheet" href="css/base.css" />
         <script type="text/javascript" src="js/cordova-1.7.0.js"></script>
         <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/date.format.js"></script>
         <script type="text/javascript" src="js/ohmage.js"></script>
         <script type="text/javascript" src="js/data.js"></script>
 
     </head> 
 
     <body> 
+        <div class="hiddenElm" style="width: 1px;height: 1px"></div>
         <table class="col" border="0" cellspacing="0" 
                style="position: relative;float:left">
             <thead>
@@ -29,22 +31,22 @@
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
+                    <td class="pain"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td  class="fatigue"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td  class="sleep"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td  class="gi"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td  class="focus"></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td  class="fun"></td>
                 </tr>
             </tbody>
         </table>
@@ -124,7 +126,7 @@
             
             $(document).ready(function(){
 
-                //localStorage.removeItem('ohmage.token')
+                localStorage.removeItem('ohmage.token')
                 if(!ohmage.token()){
                     if(ohmage.password()){
                         login()
@@ -133,11 +135,8 @@
                     }
                 }
                 else{
-                    ohmage.loadData(ohmage.username(),function(){
-                        $('.loginForm').hide()
-                    })
+                    ohmage.loadData(ohmage.username())                
                 }
-
                 
                 /*
                 $('body').prepend($(".col").clone())
@@ -147,15 +146,7 @@
                 $('body').prepend($(".col").clone())
                  */
             
-                [   '#f32f05',
-                    '#f36408',
-                    '#f29708',
-                    '#f2cc09',
-                    '#f1ef0e',
-                    '#cbda0b',
-                    '#94bb0b',
-                    '#5a9a08',
-                    '#237c08']
+
                 /*
                 $(".col tbody td").each(function(i){
                     var rand = Math.random()*clrs.length
@@ -190,6 +181,7 @@
                     ohmage.username($('#username').val())
                     ohmage.password( $('#password').val())
                     login()
+                    return false;
                 })
                 $('.loginForm').show()
             }

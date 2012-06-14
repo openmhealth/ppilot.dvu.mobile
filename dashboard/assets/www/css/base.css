@@ -15,7 +15,7 @@ td{
 }
 
 .col tbody tr td{
-    background: green url('../img/more.png') bottom right no-repeat;
+    background: rgb(128, 128, 128) url('../img/more.png') bottom right no-repeat;
     border-bottom: 1px #ccc solid;
     border-right: 1px #ccc solid;
 }

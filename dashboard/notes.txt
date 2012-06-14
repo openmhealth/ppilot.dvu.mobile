@@ -1,1 +1,37 @@
 pain pilot app
+
+Pain
+In the past 7 days, how intense was your pain at its worst?
+In the past 7 days, how intense was your average pain?
+On a scale from 0 to 10, what has been your worst level of pain so far today?
+On a scale from 0 to 10, what has been your average level of pain so far today?
+How is your pain level right now?
+In the past 7 days, how much relief have pain treatments or medications provided?
+
+Fatigue
+In the past 24 hours, Over the past 24 hours, how often did you have to push yourself to get things done because of your fatigue?
+How often over the past 24 hours did you feel drowsy or sleepy during the day?
+
+Sleep
+In the past 7 days, how refreshing was your sleep?
+In the past 7 days, how much of a problem did you have with your sleep?
+
+G.I.
+How often over the past 24 hours did you feel nauseated?
+How often over the past 24 hours did you feel constipated?
+
+Focus
+In the past 7 days, how much did pain interfere with your day to day activities?
+Fun (Interest, etc.)
+In the past 7 days, how often have you felt little interest or pleasure in doing things?
+
+
+1: #f32f05
+2: #f36408
+3: #f29708
+4: #f2cc09
+5: #f1ef0e
+6: #cbda0b
+7: #94bb0b
+8: #5a9a08
+9: #237c08
