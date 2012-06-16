@@ -1,0 +1,87 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 1000%;
+    height: 100%;
+    background: #000;
+    font-family: sans-serif;
+}
+
+td{
+    text-align:center;
+    border-bottom: 1px black solid;
+    border-right: 1px #333 solid;
+}
+
+.col tbody tr td{
+    background: rgb(128, 128, 128) url('../img/more.png') bottom right no-repeat;
+    border-bottom: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+}
+
+.icons tbody tr td{
+    background-color: #fff;
+    background-image: none;
+    border: 1px #ccc solid;
+    border-top: none;
+}
+
+thead tr td{
+    background-color: #000;
+    background-image: none;
+    color: #eee;
+}
+
+.icons thead tr td{
+    background-color: #000;
+}
+#detail,
+.loginForm{
+    position:fixed;
+    top:0px;
+    left:0px;
+    background-color: #111;
+}
+.loginForm h2{
+    color:white;
+    margin-left: 50px;
+}
+
+.loginForm div{
+    text-align: left;
+    padding: 0 50px;
+}
+.loginForm .labelWrap{
+    margin-top: 20px;
+}
+.loginForm div label{
+    color:#888;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.loginForm div input{
+    font-size: 32px;
+    border:none;
+}
+.loginForm div input[type=submit]{
+    background-color: #888;
+    height:50px;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: 1px white solid;
+    color:white;
+}
+
+.spinner{
+    z-index: 10;
+    background: url(../img/spinner.gif);
+    position: fixed;
+    width: 125px;
+    height: 125px;
+}
+
+#detail{
+    color:white;
+}

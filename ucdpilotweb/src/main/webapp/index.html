@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html> 
+    <head> 
+        <title>Page Title</title> 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <!--
+                <link rel="stylesheet" href="jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
+        <script type="text/javascript" src="jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
+        -->
+        <link rel="stylesheet" href="css/base.css" />
+        <script type="text/javascript" src="js/cordova-1.7.0.js"></script>
+        <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/date.format.js"></script>
+        <script type="text/javascript" src="js/ohmage.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
+
+    </head> 
+
+    <body> 
+        <div class="hiddenElm" style="width: 1px;height: 1px"></div>
+        <table class="col" border="0" cellspacing="0" 
+               style="position: relative;float:left">
+            <thead>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pain"></td>
+                </tr>
+                <tr>
+                    <td  class="fatigue"></td>
+                </tr>
+                <tr>
+                    <td  class="sleep"></td>
+                </tr>
+                <tr>
+                    <td  class="gi"></td>
+                </tr>
+                <tr>
+                    <td  class="focus"></td>
+                </tr>
+                <tr>
+                    <td  class="fun"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="icons" border="0" cellspacing="0" style="position: fixed">
+            <thead>
+                <tr>
+                    <td>
+                        Daily:
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="img/pain.png" alt="" width="50%" /><br/>
+                        Pain
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/fatigue.png" alt="" width="50%" /><br/>
+                        Fatigue
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/sleep.png" alt="" width="50%" /><br/>
+                        Sleep
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/gi.png" alt="" width="50%" /><br/>
+                        G.I.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/focus.png" alt="" width="50%"/><br/>
+                        Focus
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/fun.png" alt="" width="50%"/><br/>
+                        Fun
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="loginForm" style="display: none"> 
+            <form action="." method="post">
+                <h2>
+                    Dashboard Login
+                </h2>
+
+                <div class="labelWrap">
+                    <label>username</label>
+                </div>
+                <div class="inputWrap">
+                    <input id="username" name="username"/>
+                </div>
+                <div class="labelWrap">
+                    <label>password</label>
+                </div>
+                <div class="inputWrap">
+                    <input id="password" name="password" type="password"/>
+                </div>
+                <div class="inputWrap">
+                    <input type="submit" value="Sign In">
+                </div>
+            </form>
+        </div>
+        <div id="detail" style="display: none">
+            Detail
+        </div>
+
+        <div class="spinner" style="display: none;"></div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                localStorage.removeItem('ohmage.token')
+                if(!ohmage.token()){
+                    if(ohmage.password()){
+                        login()
+                    }else{
+                        showLoginDialog()
+                    }
+                }
+                else{
+                    ohmage.loadData(ohmage.username())
+                }
+                doLayout()
+            })
+            
+            function login(){
+                $('.spinner').show()
+                ohmage.login(ohmage.username(),ohmage.password(),{
+                    success : function(){
+                        $('.spinner').hide()
+                        ohmage.loadData(ohmage.username(),function(){
+                            $('.loginForm').hide()
+                        }
+                    )},
+                    failure : function(){
+                        $('.spinner').hide()
+                        alert('failure')
+                    }
+                })
+            }
+            
+            function showLoginDialog(){
+                $('.loginForm form').submit(function(){
+                    ohmage.username($('#username').val())
+                    ohmage.password( $('#password').val())
+                    login()
+                    return false;
+                })
+                $('.loginForm').show()
+            }
+            
+            function doLayout(){
+                var winW = $(window).width()
+                var winH = $(window).height()
+                $('.spinner').css('left',winW/2-125/2).css('top',winH/2-125/2)
+                $('.inputWrap input').width(winW-100)
+                $('.loginForm').css('width',winW).css('height',winH)
+                $('#detail').css('width',winW).css('height',winH)
+                $('td').each(function(){
+                    $(this).css('width',winH/7.3).css('height',winH/7.3)
+                })
+            }
+        </script>
+    </body>
+
+</html>
