@@ -7,8 +7,49 @@ and open the template in the editor.
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/cordova-1.7.0.js"></script>
+        <script type="text/javascript">
+            function init() {
+                document.addEventListener("deviceready", startup, false);
+            }
+            function startup() {
+                document.addEventListener("menubutton", doMenu, false);
+            }
+            function doMenu() {
+                var menu = document.getElementById('menu')
+                if(menu.style.display=== 'none')
+                    menu.style.display='inline';
+                else
+                    menu.style.display= 'none'
+            }
+        </script>
+        <style type="text/css">
+            #menu{
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+                right:0px;
+                padding: 10px;
+                background-color: #000;
+                color:white;
+            }
+            .hidden{
+                display: none;
+            }
+        </style>
     </head>
-    <body style="margin: 0;padding: 0">
-        <iframe frameborder="0" style="margin: 0;border:none;width:100%;height:100%" src="http://192.168.1.4:8080/ucdpilotweb"></iframe>
+    <body style="margin: 0;padding: 0" onload="init()">
+        <iframe id="iframe" frameborder="0" 
+                style="margin: 0;border:none;width:100%;height:100%" 
+                src="http://192.168.1.4:8080/ucdpilotweb">
+
+        </iframe>
+        <span id="menu" style="display: none" 
+              onclick="document.getElementById('menu').style.display='none';
+                  document.getElementById('iframe')
+                  .contentWindow.location.reload();
+              ">
+            <img src="img/refresh.png"/>    
+        </span>
     </body>
 </html>
