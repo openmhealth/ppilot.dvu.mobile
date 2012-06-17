@@ -83,5 +83,44 @@ thead tr td{
 }
 
 #detail{
+    background-color: white;
     color:white;
+}
+
+#detail ul{
+    padding: 10px;
+    margin:0;
+    list-style: none;
+}
+#detail ul li{
+    border-radius: 5px;
+    border-top: 1px solid #fff;
+    background-color: green;
+    padding: 5px;
+    font-size: 11px;
+    color:black;
+}
+
+span.answer{
+    float: right;
+    font-weight: bold;
+}
+#detail h1{
+    background-color: black;
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+#detail h1 span{
+    font-weight: normal;
+    float: left;
+    position: relative;
+    left:0px;   
+}
+#detail .surveyTitle{
+    padding-left: 10px;
+    color:#111;
+    position: relative;
+    top:10px;
 }

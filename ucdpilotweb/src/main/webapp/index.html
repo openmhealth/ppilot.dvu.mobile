@@ -10,11 +10,13 @@
         <script type="text/javascript" src="jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
         -->
         <link rel="stylesheet" href="css/base.css" />
+        <!--
         <script type="text/javascript" src="js/cordova-1.7.0.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
+        -->
         <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
         <script type="text/javascript" src="js/date.format.js"></script>
         <script type="text/javascript" src="js/ohmage.js"></script>
-        <script type="text/javascript" src="js/data.js"></script>
 
     </head> 
 
@@ -121,9 +123,7 @@
                 </div>
             </form>
         </div>
-        <div id="detail" style="display: none">
-            Detail
-        </div>
+        <div id="detail" style="display: none"></div>
 
         <div class="spinner" style="display: none;"></div>
         <script type="text/javascript">
@@ -135,50 +135,50 @@
                     }else{
                         showLoginDialog()
                     }
-                }
-                else{
-                    ohmage.loadData(ohmage.username())
-                }
-                doLayout()
-            })
+            }
+            else{
+                ohmage.loadData(ohmage.username())
+            }
+            doLayout()
+        })
             
-            function login(){
-                $('.spinner').show()
-                ohmage.login(ohmage.username(),ohmage.password(),{
-                    success : function(){
-                        $('.spinner').hide()
-                        ohmage.loadData(ohmage.username(),function(){
-                            $('.loginForm').hide()
-                        }
-                    )},
-                    failure : function(){
-                        $('.spinner').hide()
-                        alert('failure')
+        function login(){
+            $('.spinner').show()
+            ohmage.login(ohmage.username(),ohmage.password(),{
+                success : function(){
+                    $('.spinner').hide()
+                    ohmage.loadData(ohmage.username(),function(){
+                        $('.loginForm').hide()
                     }
-                })
-            }
+                )},
+                failure : function(){
+                    $('.spinner').hide()
+                    alert('failure')
+                }
+            })
+        }
             
-            function showLoginDialog(){
-                $('.loginForm form').submit(function(){
-                    ohmage.username($('#username').val())
-                    ohmage.password( $('#password').val())
-                    login()
-                    return false;
-                })
-                $('.loginForm').show()
-            }
+        function showLoginDialog(){
+            $('.loginForm form').submit(function(){
+                ohmage.username($('#username').val())
+                ohmage.password( $('#password').val())
+                login()
+                return false;
+            })
+            $('.loginForm').show()
+        }
             
-            function doLayout(){
-                var winW = $(window).width()
-                var winH = $(window).height()
-                $('.spinner').css('left',winW/2-125/2).css('top',winH/2-125/2)
-                $('.inputWrap input').width(winW-100)
-                $('.loginForm').css('width',winW).css('height',winH)
-                $('#detail').css('width',winW).css('height',winH)
-                $('td').each(function(){
-                    $(this).css('width',winH/7.3).css('height',winH/7.3)
-                })
-            }
+        function doLayout(){
+            var winW = $(window).width()
+            var winH = $(window).height()
+            $('.spinner').css('left',winW/2-125/2).css('top',winH/2-125/2)
+            $('.inputWrap input').width(winW-100)
+            $('.loginForm').css('width',winW).css('height',winH)
+            $('#detail').css('width',winW).css('height',winH)
+            $('td').each(function(){
+                $(this).css('width',winH/7.3).css('height',winH/7.3)
+            })
+        }
         </script>
     </body>
 

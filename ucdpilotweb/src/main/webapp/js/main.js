@@ -52,9 +52,9 @@ var toggleAccel = function() {
         var options = {};
         options.frequency = 1000;
         accelerationWatch = navigator.accelerometer.watchAcceleration(
-                updateAcceleration, function(ex) {
-                    alert("accel fail (" + ex.name + ": " + ex.message + ")");
-                }, options);
+            updateAcceleration, function(ex) {
+                alert("accel fail (" + ex.name + ": " + ex.message + ")");
+            }, options);
     }
 };
 
@@ -90,9 +90,9 @@ function close() {
 
 function contacts_success(contacts) {
     alert(contacts.length
-            + ' contacts returned.'
-            + (contacts[2] && contacts[2].name ? (' Third contact is ' + contacts[2].name.formatted)
-                    : ''));
+        + ' contacts returned.'
+        + (contacts[2] && contacts[2].name ? (' Third contact is ' + contacts[2].name.formatted)
+            : ''));
 }
 
 function get_contacts() {
@@ -100,8 +100,8 @@ function get_contacts() {
     obj.filter = "";
     obj.multiple = true;
     navigator.contacts.find(
-            [ "displayName", "name" ], contacts_success,
-            fail, obj);
+        [ "displayName", "name" ], contacts_success,
+        fail, obj);
 }
 
 function check_network() {
@@ -129,9 +129,13 @@ function toggleCompass() {
     if (watchID !== null) {
         navigator.compass.clearWatch(watchID);
         watchID = null;
-        updateHeading({ magneticHeading : "Off"});
+        updateHeading({
+            magneticHeading : "Off"
+        });
     } else {        
-        var options = { frequency: 1000 };
+        var options = {
+            frequency: 1000
+        };
         watchID = navigator.compass.watchHeading(updateHeading, function(e) {
             alert('Compass Error: ' + e.code);
         }, options);
