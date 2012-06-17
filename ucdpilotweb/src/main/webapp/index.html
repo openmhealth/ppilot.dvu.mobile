@@ -135,50 +135,49 @@
                     }else{
                         showLoginDialog()
                     }
-            }
-            else{
-                ohmage.loadData(ohmage.username())
-            }
-            doLayout()
-        })
-            
-        function login(){
-            $('.spinner').show()
-            ohmage.login(ohmage.username(),ohmage.password(),{
-                success : function(){
-                    $('.spinner').hide()
-                    ohmage.loadData(ohmage.username(),function(){
-                        $('.loginForm').hide()
-                    }
-                )},
-                failure : function(){
-                    $('.spinner').hide()
-                    alert('failure')
                 }
+                else{
+                    ohmage.loadData(ohmage.username())
+                }
+                doLayout()
             })
-        }
             
-        function showLoginDialog(){
-            $('.loginForm form').submit(function(){
-                ohmage.username($('#username').val())
-                ohmage.password( $('#password').val())
-                login()
-                return false;
-            })
-            $('.loginForm').show()
-        }
+            function login(){
+                $('.spinner').show()
+                ohmage.login(ohmage.username(),ohmage.password(),{
+                    success : function(){
+                        $('.spinner').hide()
+                        $('.loginForm').hide()
+                            ohmage.loadData(ohmage.username())
+                    },
+                    failure : function(){
+                        $('.spinner').hide()
+                        alert('failure')
+                    }
+                })
+            }
             
-        function doLayout(){
-            var winW = $(window).width()
-            var winH = $(window).height()
-            $('.spinner').css('left',winW/2-125/2).css('top',winH/2-125/2)
-            $('.inputWrap input').width(winW-100)
-            $('.loginForm').css('width',winW).css('height',winH)
-            $('#detail').css('width',winW).css('height',winH)
-            $('td').each(function(){
-                $(this).css('width',winH/7.3).css('height',winH/7.3)
-            })
-        }
+            function showLoginDialog(){
+                $('.loginForm form').submit(function(){
+                    ohmage.username($('#username').val())
+                    ohmage.password( $('#password').val())
+                    login()
+                    return false;
+                })
+                $('.loginForm').show()
+            }
+            
+            function doLayout(){
+                var winW = $(window).width()
+                var winH = $(window).height()
+                $('.spinner').css('left',winW/2-125/2).css('top',winH/2-125/2)
+                $('.inputWrap input').width(winW-100)
+                $('.loginForm').css('width',winW).css('height',winH)
+                $('#detail').css('width',winW).css('height',winH)
+                $('td').each(function(){
+                    $(this).css('width',winH/7.3).css('height',winH/7.3)
+                })
+            }
         </script>
     </body>
 

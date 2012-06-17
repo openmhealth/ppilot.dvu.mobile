@@ -2,8 +2,8 @@
 body{
     margin: 0;
     padding: 0;
-    width: 1000%;
     height: 100%;
+    width: 1000px;
     background: #000;
     font-family: sans-serif;
 }
@@ -85,6 +85,7 @@ thead tr td{
 #detail{
     background-color: white;
     color:white;
+    overflow: scroll;
 }
 
 #detail ul{
@@ -96,8 +97,8 @@ thead tr td{
     border-radius: 5px;
     border-top: 1px solid #fff;
     background-color: green;
-    padding: 5px;
-    font-size: 11px;
+    padding: 10px;
+    font-size: 13px;
     color:black;
 }
 
@@ -106,6 +107,7 @@ span.answer{
     font-weight: bold;
 }
 #detail h1{
+    position: relative;
     background-color: black;
     font-size: 16px;
     text-align: center;
@@ -115,8 +117,8 @@ span.answer{
 #detail h1 span{
     font-weight: normal;
     float: left;
-    position: relative;
-    left:0px;   
+    position: absolute;
+    left:10px;   
 }
 #detail .surveyTitle{
     padding-left: 10px;

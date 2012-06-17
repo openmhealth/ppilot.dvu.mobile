@@ -125,6 +125,8 @@ ohmage.loadData = function(patient){
                     })
                 })
             }
+            $('body').css('width',
+                $('.col').length*$('table').width())
             $('.spinner').hide()
         }
     });
@@ -322,7 +324,7 @@ ohmage.data.init = function(input){
     
     ohmage.data.getResults = function(day){
         var detail = $('#detail')
-        detail.html()
+        detail.html('')
         var header = $('<h1><span class=\'back\'>&laquo;back</span>'+day+'</h1>')
         header.click(function(){
             detail.hide()
