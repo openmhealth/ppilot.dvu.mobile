@@ -8,3 +8,12 @@ if(isAndroid) {
         });
     });
 }
+
+$(document).ready(function(){
+    $(window).scroll(function(){
+        var scrollLeft = $(this).scrollLeft()  
+        $("#detail").css('left',scrollLeft)
+    //var menu = $("#menu")
+    //menu.css('left',scrollLeft-menu.width())
+    })
+})

@@ -174,7 +174,8 @@ function editCell(date, category, data){
         $('.hiddenElm').css('background-color',ohmage.colors[data[category]])
         var clr2 = $('.hiddenElm').css('background-color')
         if(clr2 == 'transparent')return
-        elm.css('background-color',aveClr(clr, clr2))
+        //elm.css('background-color',aveClr(clr, clr2))
+        elm.css('background-color',clr)
     }
 }
 
