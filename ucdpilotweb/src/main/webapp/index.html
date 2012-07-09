@@ -2,22 +2,13 @@
     "http://www.w3.org/TR/html4/strict.dtd">
 <html> 
     <head> 
-        <title>Page Title</title> 
-
+        <title>UCD Pain Pilot</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <!--
-                <link rel="stylesheet" href="jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
-        <script type="text/javascript" src="jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
-        -->
         <link rel="stylesheet" href="css/base.css" />
-        <!--
-        <script type="text/javascript" src="js/cordova-1.7.0.js"></script>
-        <script type="text/javascript" src="js/data.js"></script>
-        -->
         <script type="text/javascript" src="js/jquery.1.7.1.min.js"></script>
         <script type="text/javascript" src="js/date.format.js"></script>
         <script type="text/javascript" src="js/ohmage.js"></script>
-
+        <script type="text/javascript" src="js/app.js"></script>
     </head> 
 
     <body> 
@@ -55,7 +46,7 @@
         <table class="icons" border="0" cellspacing="0" style="position: fixed">
             <thead>
                 <tr>
-                    <td>
+                    <td onclick="refresh()">
                         Daily:
                     </td>
                 </tr>
@@ -124,9 +115,19 @@
             </form>
         </div>
         <div id="detail" style="display: none"></div>
-
+        <div id="menu" style="display: none">
+            <div>
+                <img src="img/refresh.png" alt="refresh"  onclick="refresh()"/> 
+            </div>
+            <div>
+                <img src="img/logout.png" alt="logout" onclick="ohmage.logout()"/>   
+            </div>
+        </div>
         <div class="spinner" style="display: none;"></div>
         <script type="text/javascript">
+            
+            
+            
             $(document).ready(function(){
                 localStorage.removeItem('ohmage.token')
                 if(!ohmage.token()){
@@ -148,7 +149,7 @@
                     success : function(){
                         $('.spinner').hide()
                         $('.loginForm').hide()
-                            ohmage.loadData(ohmage.username())
+                        ohmage.loadData(ohmage.username())
                     },
                     failure : function(){
                         $('.spinner').hide()
@@ -173,7 +174,7 @@
                 $('.spinner').css('left',winW/2-125/2).css('top',winH/2-125/2)
                 $('.inputWrap input').width(winW-100)
                 $('.loginForm').css('width',winW).css('height',winH)
-                $('#detail').css('width',winW).css('height',winH)
+                $('#detail').css('width',winW)//.css('height',winH)
                 $('td').each(function(){
                     $(this).css('width',winH/7.3).css('height',winH/7.3)
                 })

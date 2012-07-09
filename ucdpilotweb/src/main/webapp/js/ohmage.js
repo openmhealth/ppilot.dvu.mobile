@@ -1,10 +1,11 @@
+
+
+
 ohmage = {}
 
-//ohmage.url = window.location.toString()+'/app'
-ohmage.url = 'https://dev.mobilizingcs.org/app'
-ohmage.client = 'pain_pilot'
-ohmage.campaign_urn = 'urn:campaign:va:pain_pilot'
-//ohmage.campaign_urn = 'urn:campaign:va:pain_pilot_2'
+ohmage.url = 'https://pilots.omh.io/app'
+ohmage.client = 'ucd_pain_pilot'
+ohmage.campaign_urn = 'urn:campaign:ucd:pilot1'
 
 ohmage.token = function(tok){
     if(tok)
@@ -41,6 +42,7 @@ ohmage.login = function(user, password, callbacks){
         password:password,
         client:ohmage.client
     },function(res){
+        $('.spinner').hide()
         res = $.parseJSON(res)
         if(res.result == 'success'){
             ohmage.token(res.token)
@@ -57,8 +59,27 @@ ohmage.login = function(user, password, callbacks){
     })
 }
 
+ohmage.logout = function(){
+    var url = ohmage.url + '/user/logout'
+    var params = {
+        auth_token:ohmage.token(),
+        client:ohmage.client
+    }
+    $.ajax({
+        url: url,
+        data:params,
+        type:'POST',
+        success: function(res) {
+            localStorage.removeItem('ohmage.token')
+            localStorage.removeItem('ohmage.username')
+            localStorage.removeItem('ohmage.password')
+            window.location.reload()
+        }
+    });
+}
+
 ohmage.loadData = function(patient){
-    $('.spinner').show()
+    $('.spinner').hide()
     //alert('auth_token:'+ohmage.token())
     var url = ohmage.url +'/survey_response/read'
     var params = {
@@ -79,7 +100,6 @@ ohmage.loadData = function(patient){
         success: function(res) {
             var data = JSON.parse(res)
             if(data.result === "failure"){
-                $('.spinner').hide()
                 alert('No Data Available, please complete a survey.')
                 return
             }else{
@@ -127,6 +147,8 @@ ohmage.loadData = function(patient){
             }
             $('body').css('width',
                 $('.col').length*$('table').width())
+        },
+        failure:function(){
             $('.spinner').hide()
         }
     });
@@ -203,11 +225,7 @@ function aveClr(c1, c2){
     return c
 }
 
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-if(isAndroid) {
-    console.log = function(string){}
-}
+
 ohmage.data = {}
     
 ohmage.data.init = function(input){
@@ -293,7 +311,7 @@ ohmage.data.init = function(input){
                 Object.keys(this.prompt_choice_glossary).length
                 if(i === 'cognition'){
                     focus.focusAccum += accum
-                }else if(i === 'constiation'){
+                }else if(i === 'consipation'){
                     counts.giAccum += accum
                     counts.giTotal ++
                 }else if(i === 'drowsiness'){
